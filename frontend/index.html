@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Trends Compare</title>
+</head>
+<body>
+  <h1>Trends Compare Demo</h1>
+  <button id="run">Run Analysis</button>
+  <pre id="output"></pre>
+  <script type="module">
+    import { runAnalysis } from './app.js';
+    document.getElementById('run').addEventListener('click', async () => {
+      try {
+        const res = await runAnalysis('Master', ['Competitor A', 'Competitor B']);
+        document.getElementById('output').textContent = JSON.stringify(res, null, 2);
+      } catch (err) {
+        document.getElementById('output').textContent = err.message;
+      }
+    });
+  </script>
+</body>
+</html>
